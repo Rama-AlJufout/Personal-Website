@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Traffic Light Exercise - Rama Ahmad</title>
+  <style>
+    body {
+      background-color: #fff0f2;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      color: #7a2a3d;
+    }
+
+    header {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #f0768b;
+      user-select: none;
+    }
+
+    .checkmark {
+      width: 24px;
+      height: 24px;
+      stroke: #f0768b;
+      stroke-width: 3;
+      fill: none;
+    }
+
+    main {
+      background-color: #4a1e2e;
+      padding: 25px 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 15px rgba(240, 120, 139, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      width: 140px;
+    }
+
+    .light {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background-color: #4a1e2e;
+      box-shadow: inset 0 0 10px #2e0f1b;
+      transition: background-color 0.5s ease, box-shadow 0.5s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: transparent;
+      user-select: none;
+    }
+
+    .light.active {
+      color: white;
+      box-shadow: 0 0 20px 6px;
+    }
+
+    .red.active {
+      background-color: #f0768b;
+      box-shadow: 0 0 20px 6px #f0768b;
+    }
+
+    .yellow.active {
+      background-color: #f4c56d;
+      box-shadow: 0 0 20px 6px #f4c56d;
+    }
+
+    .green.active {
+      background-color: #7ecb7e;
+      box-shadow: 0 0 20px 6px #7ecb7e;
+    }
+
+    .label {
+      margin-top: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      height: 24px;
+      text-align: center;
+      color: #7a2a3d;
+      user-select: none;
+      min-width: 70px;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #f0768b;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Rama Ahmad
+    <svg class="checkmark" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 12l6 6 10-14" stroke="#f0768b" stroke-width="3" fill="none"/>
+    </svg>
+  </header>
+
+  <main>
+    <div>
+      <div id="red" class="light red"></div>
+      <div class="label" id="label-red"></div>
+    </div>
+    <div>
+      <div id="yellow" class="light yellow"></div>
+      <div class="label" id="label-yellow"></div>
+    </div>
+    <div>
+      <div id="green" class="light green"></div>
+      <div class="label" id="label-green"></div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Rama Ahmad
+  </footer>
+
+  <script>
+    const lights = [
+      { id: 'red', labelId: 'label-red', colorName: 'Red' },
+      { id: 'yellow', labelId: 'label-yellow', colorName: 'Yellow' },
+      { id: 'green', labelId: 'label-green', colorName: 'Green' },
+    ];
+
+    let current = 0;
+
+    function updateLights() {
+      lights.forEach((light, index) => {
+        const el = document.getElementById(light.id);
+        const labelEl = document.getElementById(light.labelId);
+        if (index === current) {
+          el.classList.add('active');
+          labelEl.textContent = light.colorName;
+          if (light.id === 'red') labelEl.style.color = '#f0768b';
+          else if (light.id === 'yellow') labelEl.style.color = '#d99e44';
+          else if (light.id === 'green') labelEl.style.color = '#4a995b';
+        } else {
+          el.classList.remove('active');
+          labelEl.textContent = '';
+          labelEl.style.color = 'transparent';
+        }
+      });
+      current = (current + 1) % lights.length;
+    }
+
+    updateLights();
+    setInterval(updateLights, 2000);
+  </script>
+</body>
+</html>

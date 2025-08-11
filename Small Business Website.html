@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spanish Food Menu</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fffefc;
+      color: #4a1e2e;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      background-color: #f0768b;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      padding: 10px 0;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: text-decoration 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      text-decoration: underline;
+    }
+
+    .search-box {
+      padding: 6px 10px;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    .hero {
+      background: url('images/Paella.jpg') no-repeat center center/cover;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #f07680;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+      text-align: center;
+      border-radius: 0 0 15px 15px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: 2rem auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #f0768b;
+      font-size: 2.4rem;
+      font-weight: 700;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .menu-item {
+      background: #fff0f2;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(240, 120, 139, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(240, 120, 139, 0.5);
+    }
+
+    .menu-item img {
+      width: 100%;
+      border-radius: 8px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .menu-item h3 {
+      color: #7a2a3d;
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+    }
+
+    .menu-item p {
+      font-size: 1rem;
+      color: #5c3a45;
+    }
+
+    .order-section {
+      max-width: 600px;
+      margin: 3rem auto;
+      background: #fff0f2;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(240, 120, 139, 0.3);
+    }
+
+    .order-section h2 {
+      color: #f0768b;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: 600;
+      color: #7a2a3d;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    select,
+    textarea {
+      padding: 10px;
+      border: 1px solid #f0768b;
+      border-radius: 6px;
+      font-size: 1rem;
+      resize: vertical;
+    }
+
+    button {
+      background-color: #f0768b;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #d95f6c;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #f0768b;
+      color: white;
+      margin-top: 40px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .search-box {
+        margin-top: 10px;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">Spanish Bites</div>
+    <ul class="nav-links">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#order">Order Now</a></li>
+    </ul>
+    <input type="text" class="search-box" placeholder="Search...">
+  </nav>
+
+  <header class="hero">
+    <h1>Welcome to Spanish Food Heaven!</h1>
+    <p>Explore our delicious and authentic Spanish dishes.</p>
+  </header>
+
+  <section id="menu" class="section">
+    <h2 class="section-title">Our Spanish Dishes</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="Paella.jpg" alt="Paella">
+        <h3>Paella</h3>
+        <p>Traditional Spanish rice dish with seafood or chicken and saffron.</p>
+      </div>
+      <div class="menu-item">
+        <img src="Omelette.jpeg" alt="Tortilla Española">
+        <h3>Tortilla Española</h3>
+        <p>Classic omelette made with eggs, potatoes, and onions.</p>
+      </div>
+      <div class="menu-item">
+        <img src="Churros.jpeg" alt="Churros">
+        <h3>Churros</h3>
+        <p>Sweet fried-dough pastries often served with chocolate.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="order" class="order-section">
+    <h2>Order Your Favorite Dish</h2>
+    <form>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="dish">Select Dish</label>
+      <select id="dish" name="dish" required>
+        <option value="">--Choose an option--</option>
+        <option value="paella">Paella</option>
+        <option value="tortilla">Tortilla Española</option>
+        <option value="churros">Churros</option>
+      </select>
+
+      <label for="address">Delivery Address</label>
+      <textarea id="address" name="address" rows="3" required></textarea>
+
+      <button type="submit">Place Order</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Spanish Food Lovers | Designed by Rama</p>
+  </footer>
+
+</body>
+</html>
